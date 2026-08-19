@@ -19,7 +19,6 @@ s8 sign1=1;
 s8 sign2=1;
 //keypad
 u8 key=0;
-
 //initialization
 KEYPAD_vid_init();
 LCD_vid_8bit_init();
@@ -72,10 +71,18 @@ while(1){
 			case '*': result = (float)num1*num2   ;break;
 			case '/': result = ((float)num1)/num2 ;break;
 			}
+			if ((num2==0)&&(operation=='/')){
+				LCD_vid_8bit_writecmd(LCD_CMD_CLEAR_DIS);
+				_delay_ms(20);
+				LCD_vid_8bit_writestr("undefined");
+			}
+			else{
 			LCD_vid_8bit_writecmd(LCD_CMD_CLEAR_DIS);
 			_delay_ms(20);
 			LCD_vid_8bit_writechar(key);
 			LCD_vid_8bit_writefloat(result);
+			}
+
 		}
 		//clearing the lCD
 		else if (key=='C'){
