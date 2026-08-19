@@ -13,12 +13,13 @@ int main(){
 s16 num1=0;
 s16 num2=0;
 f32 result=0;
+u8 operation=0;
 //sign
 s8 sign1=1;
 s8 sign2=1;
 //keypad
 u8 key=0;
-u8 operation=0;
+
 //initialization
 KEYPAD_vid_init();
 LCD_vid_8bit_init();
